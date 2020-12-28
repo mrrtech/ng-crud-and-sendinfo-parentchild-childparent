@@ -1,0 +1,51 @@
+<app-page-header-wrapper
+  logo="{{ logo }}"
+  title="{{ title }}"
+></app-page-header-wrapper>
+
+<div class="pt-4 pl-5 mb-3">
+  <div class="row">
+    <div class="col col-sm-12 pr-5">
+      <div class="card bg-light mb-3 shadow">
+        <div class="card-header">
+          <strong>{{ title }}</strong>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table mb-0">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Client Name</th>
+                  <th>Client Code</th>
+                  <th>Category</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let prop of clients">
+                  <td>
+                    <a [routerLink]="[prop.id]">
+                      {{ prop.id }}
+                    </a>
+                  </td>
+                  <td>{{ prop.clientName }}</td>
+                  <td>{{ prop.clientCode }}</td>
+                  <td>{{ prop.category }}</td>
+                  <td>
+                    <button
+                      class="btn btn-outline-primary btn-sm"
+                      [routerLink]="[prop.id, 'edit']"
+                    >
+                      Edit
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

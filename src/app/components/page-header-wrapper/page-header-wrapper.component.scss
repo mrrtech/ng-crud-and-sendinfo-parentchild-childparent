@@ -1,0 +1,18 @@
+.wrapper-container {
+  position: relative;
+  .wrapper-header {
+    position: relative;
+    height: auto;
+    width: 100%;
+    padding: 15px 0px 0px 15px;
+    color: #007bff;
+    font-weight: 300;
+    font-size: 1.4 rem;
+    letter-spacing: 0.7px;
+  }
+  hr {
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+  }
+}

@@ -1,0 +1,103 @@
+<div class="card-body">
+  <form novalidate #clientForm="ngForm">
+    <fieldset>
+      <legend>Basic Client Information</legend>
+
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label" for="clientNameId"
+          >Client Name</label
+        >
+        <div class="col-md-8">
+          <input
+            class="form-control"
+            id="clientNameId"
+            type="text"
+            placeholder="Name (required)"
+            required
+            minlength="3"
+            [(ngModel)]="client.clientName"
+            name="clientName"
+            #clientNameVar="ngModel"
+            [ngClass]="{
+              'is-invalid':
+                (clientNameVar.touched ||
+                  clientNameVar.dirty ||
+                  client.id !== 0) &&
+                !clientNameVar.valid
+            }"
+          />
+          <span class="invalid-feedback">
+            <span *ngIf="clientNameVar.errors?.required">
+              Client name is required.
+            </span>
+            <span *ngIf="clientNameVar.errors?.minlength">
+              Client name must be at least three characters.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label" for="clientCodeId"
+          >Client Code</label
+        >
+        <div class="col-md-8">
+          <input
+            class="form-control"
+            id="clientCodeId"
+            type="text"
+            placeholder="Code (required)"
+            required
+            [(ngModel)]="client.clientCode"
+            name="clientCode"
+            #clientCodeVar="ngModel"
+            [ngClass]="{
+              'is-invalid':
+                (clientCodeVar.touched ||
+                  clientCodeVar.dirty ||
+                  client.id !== 0) &&
+                !clientCodeVar.valid
+            }"
+          />
+          <span class="invalid-feedback">
+            <span *ngIf="clientCodeVar.errors?.required">
+              Client code is required.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label" for="categoryId">Category</label>
+        <div class="col-md-8">
+          <input
+            class="form-control"
+            id="categoryId"
+            type="text"
+            placeholder="Category (required)"
+            required
+            minlength="3"
+            [(ngModel)]="client.category"
+            name="category"
+            #categoryVar="ngModel"
+            [ngClass]="{
+              'is-invalid':
+                (categoryVar.touched || categoryVar.dirty || client.id !== 0) &&
+                !categoryVar.valid
+            }"
+          />
+          <span class="invalid-feedback">
+            <span *ngIf="categoryVar.errors?.required">
+              A category must be entered.
+            </span>
+            <span *ngIf="categoryVar.errors?.minlength">
+              The category must be at least 3 characters in length.
+            </span>
+          </span>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+
+<div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
