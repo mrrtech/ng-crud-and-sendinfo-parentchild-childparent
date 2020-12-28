@@ -22,7 +22,6 @@ export class ClientEditInfoComponent implements OnInit {
       if (this.clientForm) {
         this.clientForm.reset();
       }
-
       this.client = data['resolvedData'].client;
     });
   }

@@ -28,7 +28,6 @@ export class ClientEditComponent implements OnInit {
   }
   set client(value: Client) {
     this.currentClient = value;
-    // Clone the object to retain a copy
     this.originalClient = value ? { ...value } : null;
   }
 
@@ -63,7 +62,6 @@ export class ClientEditComponent implements OnInit {
 
   deleteClient(): void {
     if (this.client.id === 0) {
-      // Don't delete, it was never saved.
       this.onSaveComplete(`${this.client.clientName} was deleted`);
     } else {
       if (confirm(`Really delete the client: ${this.client.clientName}?`)) {
@@ -120,16 +118,12 @@ export class ClientEditComponent implements OnInit {
       this.messageService.addMessage(message);
     }
     this.reset();
-
-    // Navigate back to the product list
     this.router.navigate(['/clientlist']);
   }
 
   validate(): void {
-    // Clear the validation object
     this.dataIsValid = {};
 
-    // 'info' tab
     if (
       this.client.clientName &&
       this.client.clientName.length >= 3 &&
@@ -139,12 +133,5 @@ export class ClientEditComponent implements OnInit {
     } else {
       this.dataIsValid['info'] = false;
     }
-
-    // // 'tags' tab
-    // if (this.client.category && this.client.category.length >= 3) {
-    //   this.dataIsValid['tags'] = true;
-    // } else {
-    //   this.dataIsValid['tags'] = false;
-    // }
   }
 }
