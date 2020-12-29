@@ -11,7 +11,8 @@ import { MessageService } from './../../message.service';
 export class ClientEditComponent implements OnInit {
   pageTitle = 'Client Edit';
   errorMessage: string;
-
+  private currentClient: Client;
+  private originalClient: Client;
   private dataIsValid: { [key: string]: boolean } = {};
 
   get isDirty(): boolean {
@@ -19,9 +20,6 @@ export class ClientEditComponent implements OnInit {
       JSON.stringify(this.originalClient) !== JSON.stringify(this.currentClient)
     );
   }
-
-  private currentClient: Client;
-  private originalClient: Client;
 
   get client(): Client {
     return this.currentClient;
